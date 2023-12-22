@@ -1,0 +1,158 @@
+/* src/ImageSlider.css */
+.image-slider-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(var(--parallax-offset, 0));
+  z-index: 2;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  transition: transform 0.5s ease-in-out, color 0.3s ease-in-out;
+}
+
+.parallax-text h1 {
+  margin: 0;
+  color: #fff; /* Default text color */
+}
+
+/* Light mode styles */
+.light-mode .parallax-text {
+  color: #333; 
+}
+
+/* Dark mode styles */
+.dark-mode .parallax-text {
+  color: #333; /* Dark mode text color */
+}
+
+.image-slider {
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+.slider-item {
+  flex: 0 0 100%;
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  will-change: transform;
+  transform: translate3d(var(--parallax-offset, 0), 0, 0);
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+
+.slider-item > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slider-item.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #333;
+  border-radius: 50%;
+  z-index: 2;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #fff;
+    color: #ccc;
+  }
+
+  color: #333;
+
+  &.dark-mode {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  z-index: 2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  background-color: #bbb;
+  color: #fff;
+
+  &.dark-mode {
+    background-color: #333;
+    color: #fff;
+  }
+
+  &:hover {
+    background-color: #333;
+  }
+
+  &.active {
+    background-color: #333;
+  }
+}
+
+.dark-mode-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #ccc;
+  z-index: 2;
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #2ea6cb;
+  }
+
+  &.dark-mode {
+    color: #fff;
+  }
+}
+
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
